@@ -15,17 +15,17 @@
     <div class="page-cart">
       <div class="title">总价 0</div>
         <div class="list">
-          <div class="product">
-		    <h3 class="code">商品编号: {{code}}</h3>
+          <div v-for="product in cartProducts" class="product">
+		    <h3 class="code">商品编号: {{product.code}}</h3>
 		    <div class="actions">
 	          <button>-</button>
-              <span>数量 1</span>
+              <span>数量 {{product.amount}}</span>
               <button>+</button>
 	        </div>
 	      </div>
 		</div>
 		<div class="bottom-action">
-	        <button class="btn" @click="toggleCart">添加商品</button>
+            <button class="btn" @click="toggleCart">添加商品</button>
 	    </div>
 		<div :class="['popup', {'active' : shouldShowCart}]">
             <div class="backdrop" @click="toggleCart"></div>
@@ -42,8 +42,13 @@
       el: '#app',
 	  data() {
 	    return {
-	      code: 'KD100013',
 	      shouldShowCart: false,
+	      cartProducts: [
+	        {
+	          code: 'KD100013',
+	          amount: 1
+	        }
+	      ],
 	    }
 	  },
 	  methods: {
