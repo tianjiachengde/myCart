@@ -2,14 +2,12 @@
   <div class="page-cart">
     <div class="title">总价 {{totalPrice}}</div>
     <div class="list">
-      <div v-for="(product, index) in cartProducts" class="product">
-        <h3 class="code">商品编号: {{product.code}}</h3>
-        <div class="actions">
-          <button @click="minusCount(index)">-</button>
-          <span>数量 {{product.amount}}</span>
-          <button @click="plusCount(index)">+</button>
-        </div>
-      </div>
+      <item
+        v-for="(product, index) in cartProducts"
+        :key="index"
+        :product="product"
+        @amount-change="handleAmountChange(index, arguments)"
+      />
     </div>
     <div class="bottom-action">
       <button class="btn" @click="toggleCart">添加商品</button>
@@ -26,6 +24,8 @@
 </template>
 
 <script>
+  import item from './components/cartItem'
+
   const generateProduct = code => ({
     code,
     amount: 1,
@@ -33,6 +33,9 @@
   })
   export default {
     name: 'cart',
+    components: {
+      item,
+    },
     data: function() {
       return {
         code: '',
@@ -51,13 +54,9 @@
       toggleCart: function() {
         this.shouldShowCart = !this.shouldShowCart
       },
-      minusCount: function(index) {
-        if (this.cartProducts[index].amount > 1) {
-          this.cartProducts[index].amount -= 1
-        }
-      },
-      plusCount: function(index) {
-        this.cartProducts[index].amount += 1
+      handleAmountChange(index, agrs) {
+        const amount = agrs[0]
+        this.cartProducts[index].amount = amount
       },
       confirm: function($event) {
         if (this.code) {
