@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <cart />
+    <Cart/>
   </div>
 </template>
 
 <script>
-import Cart from './pages/cart'
+  import Cart from './pages/cart'
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
     Cart
   }
 }
 </script>
-<style src="./base.css" />
+
+<style>
+</style>
