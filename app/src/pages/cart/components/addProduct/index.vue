@@ -1,3 +1,4 @@
+<template>
   <div>
     <div class="bottom-action">
       <button class="btn" @click="toggleCart">添加商品</button>
@@ -13,27 +14,27 @@
   </div>
 </template>
 <script>
-  export default{
-    data: function() {
-      return {
-        code: '',
-        shouldShowCart: false,
+export default {
+  data() {
+    return {
+      code: '',
+      shouldShowCart: false,
+    }
+  },
+  methods: {
+    toggleCart() {
+      this.shouldShowCart = !this.shouldShowCart
+    },
+    confirm($event) {
+      if (this.code) {
+        this.$emit('add', this.code)
+        this.code = ''
+        this.shouldShowCart = false
       }
+      $event.preventDefault()
     },
-    methods: {
-      toggleCart: function() {
-        this.shouldShowCart = !this.shouldShowCart
-      },
-      confirm: function($event) {
-        if (this.code) {
-          this.$emit('add', this.code)
-          this.code = ''
-          this.shouldShowCart = false
-        }
-        $event.preventDefault()
-      },
-    },
-  }
+  },
+}
 </script>
 
 <style scoped src="./styles.css" />

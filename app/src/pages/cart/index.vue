@@ -2,21 +2,19 @@
   <div class="page-cart">
     <div class="title">总价 {{totalPrice}}</div>
     <div class="list">
-      <item
+      <cart-item
         v-for="(product, index) in cartProducts"
         :key="index"
         :product="product"
         @amount-change="handleAmountChange(index, arguments)"
       />
     </div>
-    <add-product
-        @add="handleAddProduct"
-    />
+    <add-product @add="handleAddProduct" />
   </div>
 </template>
 
 <script>
-  import item from './components/cartItem'
+  import cartItem from './components/cartItem'
   import addProduct from './components/addProduct'
 
   const generateProduct = code => ({
@@ -27,10 +25,10 @@
   export default {
     name: 'cart',
     components: {
-      item,
+      cartItem,
       addProduct,
     },
-    data: function() {
+    data() {
       return {
         code: '',
         shouldShowCart: false,
@@ -49,7 +47,7 @@
         const amount = agrs[0]
         this.cartProducts[index].amount = amount
       },
-      handleAddProduct: function(code) {
+      handleAddProduct(code) {
         const index = this.cartProducts.findIndex(product => product.code === code)
         if (index >= 0) {
           this.cartProducts[index].amount += 1
@@ -61,4 +59,4 @@
   }
 </script>
 
-<style src="./cart.css" />
+<style src="./cart.css"></style>
