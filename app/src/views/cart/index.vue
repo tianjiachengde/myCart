@@ -32,7 +32,11 @@
       return {
         code: '',
         shouldShowCart: false,
-        cartProducts: [],
+        cartProducts: [{
+          code: '123',
+          amount: 1,
+          price: 100,
+        }],
       }
     },
     computed: {

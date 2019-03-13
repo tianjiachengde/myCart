@@ -1,6 +1,10 @@
 <template>
   <div class="product">
-    <h3 class="code">商品编号: {{product.code}}</h3>
+    <h3 class="code">
+      <router-link :to="`/products/${product.code}`">
+        商品编号: {{product.code}}
+      </router-link>
+    </h3>
     <div class="actions">
       <button @click="minusCount">-</button>
       <span>数量 {{product.amount}}</span>

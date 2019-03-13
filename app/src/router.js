@@ -1,16 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import cart from './pages/cart'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+import cart from './views/cart'
+import detail from './views/detail'
+import NotFound from './views/404'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
-    {
-      path: '/',
-      name: 'cart',
-      component: cart
-    },
+    { path: '/', redirect: '/cart' },
+    { path: '/cart', name: 'cart', component: cart },
+    { path: '/products/:id', name: 'detail', component: detail },
+    { path: '*', name: 'NotFound', component: NotFound },
     {
       path: '/about',
       name: 'about',
@@ -23,3 +27,20 @@ export default new Router({
     }
   ]
 })
+
+router.beforeResolve((to, from, next) => {
+  // If this isn't an initial page load.
+  if (to.name) {
+    // Start the route progress bar.
+    NProgress.start()
+  }
+  next()
+})
+
+router.afterEach((to, from) => {
+
+  // Complete the animation of the route progress bar.
+  NProgress.done()
+})
+
+export default router

@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 
-import CartItem from '../../src/pages/cart/components/cartItem'
+import CartItem from '../../src/views/cart/components/cartItem'
 
 describe('CartItem component', () => {
 

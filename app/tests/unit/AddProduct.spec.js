@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import AddProduct from '../../src/pages/cart/components/addProduct'
+import AddProduct from '../../src/views/cart/components/addProduct'
 
 describe('AddProduct component', () => {
 
