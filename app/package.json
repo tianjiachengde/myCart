@@ -10,7 +10,6 @@
     "mock": "json-server src/assets/products.json"
   },
   "dependencies": {
-    "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vue": "^2.6.6",
     "nprogress": "^0.2.0",
