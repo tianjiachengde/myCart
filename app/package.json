@@ -9,7 +9,8 @@
     "test:ci": "yarn test:unit --coverage"
   },
   "dependencies": {
-    "vue": "^2.6.6"
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-unit-jest": "^3.5.0",

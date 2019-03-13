@@ -1,19 +1,12 @@
 <template>
   <div id="app">
-    <Cart/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-  import Cart from './pages/cart'
-
-export default {
-  name: 'app',
-  components: {
-    Cart
-  }
-}
-</script>
 
 <style>
 </style>
