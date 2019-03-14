@@ -6,7 +6,7 @@
         v-for="(product, index) in cartProducts"
         :key="index"
         :product="product"
-        @amount-change="handleAmountChange(index, arguments)"
+        @amount-change="handleAmountChange(product, arguments)"
       />
     </div>
     <add-product @add="handleAddProduct" />
