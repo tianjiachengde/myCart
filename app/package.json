@@ -5,24 +5,19 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "mock": "json-server src/assets/products.json",
-    "ssr:build": "vue-cli-service ssr:build",
-    "ssr:serve": "vue-cli-service ssr:serve",
-    "ssr:start": "cross-env NODE_ENV=production vue-cli-service ssr:serve --mode production",
+    "test:unit": "vue-cli-service test:unit",
     "test:ci": "yarn test:unit --coverage",
-    "test:unit": "vue-cli-service test:unit"
+    "mock": "json-server src/assets/products.json"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "nprogress": "^0.2.0",
-    "vue": "^2.6.9",
+    "vue": "^2.6.6",
     "vue-resource": "^1.5.0",
     "vue-router": "^3.0.1",
-    "vue-server-renderer": "^2.6.6",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@akryum/vue-cli-plugin-ssr": "^0.5.0",
     "@vue/cli-plugin-unit-jest": "^3.5.0",
     "@vue/cli-service": "^3.0.3",
     "@vue/test-utils": "1.0.0-beta.29",
