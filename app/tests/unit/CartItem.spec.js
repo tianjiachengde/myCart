@@ -1,4 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
+import localVue from './setup'
 
 import CartItem from '../../src/views/cart/components/cartItem'
 
@@ -9,7 +10,7 @@ describe('CartItem component', () => {
     const product = { code: 'one', price: 100, amount: 2 }
 
     // when
-    const wrapper = shallowMount(CartItem, { propsData: { product }})
+    const wrapper = shallowMount(CartItem, { localVue, propsData: { product }})
     wrapper.find('button').trigger('click')
 
     // then
@@ -21,7 +22,7 @@ describe('CartItem component', () => {
     const product = { code: 'one', price: 100, amount: 1 }
 
     // when
-    const wrapper = shallowMount(CartItem, { propsData: { product }})
+    const wrapper = shallowMount(CartItem, { localVue, propsData: { product }})
     wrapper.find('button').trigger('click')
 
     // then

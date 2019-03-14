@@ -5,6 +5,7 @@ import 'nprogress/nprogress.css'
 
 import cart from './views/cart'
 import detail from './views/detail'
+import counter from './views/counter'
 import NotFound from './views/404'
 
 Vue.use(Router)
@@ -14,6 +15,7 @@ const router = new Router({
     { path: '/', redirect: '/cart' },
     { path: '/cart', name: 'cart', component: cart },
     { path: '/products/:id', name: 'detail', component: detail },
+    { path: '/counter', name: 'detail', component: counter },
     { path: '*', name: 'NotFound', component: NotFound },
     {
       path: '/about',
