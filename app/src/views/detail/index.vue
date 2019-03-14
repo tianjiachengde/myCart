@@ -1,6 +1,9 @@
 <template>
   <div v-if="product" class="product">
-    <div class="product-detail">
+    <section v-if="false">
+      <h3>购物车总价</h3>
+    </section>
+    <section class="product-detail">
       <h3>产品信息</h3>
       <ul class="product-info">
         <li class="product-code">编号：{{ id }}</li>
@@ -8,14 +11,13 @@
         <li>品牌：{{ product.brand }}</li>
         <li class="product-cost">价格：¥ {{ product.cost }}</li>
       </ul>
-    </div>
-    <hr style="margin: 10px 0;">
-    <div class="product-desc">
+    </section>
+    <section class="product-desc">
       <h3>产品介绍</h3>
       <div class="product-image">
         <img :src="product.image" alt="product">
       </div>
-    </div>
+    </section>
     <p>
       wonderful products, think different.
     </p>
