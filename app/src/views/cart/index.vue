@@ -14,6 +14,7 @@
 </template>
 
 <script>
+  import { mapState, mapGetters, mapActions } from 'vuex'
   import cartItem from './components/cartItem'
   import addProduct from './components/addProduct'
 
@@ -28,36 +29,28 @@
       cartItem,
       addProduct,
     },
-    data() {
-      return {
-        code: '',
-        shouldShowCart: false,
-        cartProducts: [{
-          code: '123',
-          amount: 1,
-          price: 100,
-        }],
-      }
-    },
     computed: {
-      totalPrice() {
-        return this.cartProducts.reduce((prev, item) => {
-          return prev + item.price * item.amount
-        }, 0)
-      },
+      ...mapState({
+        cartProducts: state => state.cart.cartProducts,
+      }),
+      ...mapGetters({
+        totalPrice: 'cartTotalPrice'
+      }),
     },
     methods: {
-      handleAmountChange(index, agrs) {
+      ...mapActions([
+        'cartAddProduct',
+        'cartChangeCount',
+      ]),
+      handleAmountChange(product, agrs) {
         const amount = agrs[0]
-        this.cartProducts[index].amount = amount
+        this.cartChangeCount({
+          code: product.code,
+          amount,
+        })
       },
-      handleAddProduct(code) {
-        const index = this.cartProducts.findIndex(product => product.code === code)
-        if (index >= 0) {
-          this.cartProducts[index].amount += 1
-        } else {
-          this.cartProducts.push(generateProduct(code))
-        }
+      handleAddProduct: function(code) {
+        this.cartAddProduct(generateProduct(code))
       },
     },
   }

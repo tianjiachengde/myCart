@@ -6,7 +6,7 @@ const generateProduct = (code, amount=1) => ({
   price: 100,
 })
 
-xdescribe('cart store', () => {
+describe('cart store', () => {
 
   it('should add product when add not existed product', () => {
     store.state.cart.cartProducts = [generateProduct('001')]
