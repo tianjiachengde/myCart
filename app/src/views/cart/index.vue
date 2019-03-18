@@ -1,11 +1,15 @@
 <template>
   <div class="page-cart">
-    <div class="title">总价 {{totalPrice}}</div>
+    <div class="title">
+        <span style="margin-right: 20px">已选择商品:{{totalCount}}</span>
+        <span>总价:{{totalPrice}}</span>
+      </div>
     <div class="list">
       <cart-item
         v-for="(product, index) in cartProducts"
         :key="index"
         :product="product"
+        @checked="handleChecked(index,arguments)"
         @amount-change="handleAmountChange(product, arguments)"
       />
     </div>
@@ -22,6 +26,7 @@
     code,
     amount: 1,
     price: 100,
+    isCheck:true
   })
   export default {
     name: 'cart',
@@ -34,14 +39,19 @@
         cartProducts: state => state.cart.cartProducts,
       }),
       ...mapGetters({
-        totalPrice: 'cartTotalPrice'
+        totalPrice: 'cartTotalPrice',
+        totalCount:'cartTotalAmount'
       }),
     },
     methods: {
       ...mapActions([
         'cartAddProduct',
         'cartChangeCount',
+        "cartChecked"
       ]),
+      handleChecked(index,args){
+          this.cartChecked(index,args[0])
+      },
       handleAmountChange(product, agrs) {
         const amount = agrs[0]
         this.cartChangeCount({

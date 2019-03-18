@@ -1,6 +1,7 @@
 <template>
   <div class="product">
     <h3 class="code">
+      <input type="checkbox" v-model="product.isCheck">
       <router-link :to="`/products/${product.code}`">
         商品编号: {{product.code}}
       </router-link>
@@ -18,6 +19,12 @@
       product: {
         type: Object,
       },
+    },
+    computed: {
+      isCheck:function () {
+        let arg = !this.product.isCheck;
+        this.$emit('checked',arg);
+      }
     },
     methods: {
       minusCount(){

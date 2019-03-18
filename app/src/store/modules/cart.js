@@ -4,11 +4,21 @@ const state = {
 
 export const getters = {
   cartTotalPrice: state => state.cartProducts.reduce((prev, item) => {
-    return prev + item.price * item.amount
+    if(item.isCheck){
+      return prev + item.price * item.amount
+    }
+    else {
+      return prev
+    }
   }, 0),
   cartTotalAmount: function cartTotalPrice(state) {
     return state.cartProducts.reduce(function (prev, item) {
-      return prev + item.amount;
+      if(item.isCheck){
+        return prev + item.amount;
+      }
+      else{
+        return prev;
+      }
     }, 0);
   },
 }
@@ -30,6 +40,9 @@ export const actions = {
         amount: payload.amount
       }
     )
+  },
+  cartChecked({commit,state},index,isCheck){
+    commit('cart_checked',state,index,isCheck)
   }
 }
 
@@ -42,6 +55,9 @@ export const mutations = {
   },
   cart_product_add(state, product) {
     state.cartProducts.push(product)
+  },
+  cart_checked(state,index,isCheck){
+    state.cartProducts[index].isCheck = isCheck
   }
 }
 
