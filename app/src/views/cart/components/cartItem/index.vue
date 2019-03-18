@@ -2,6 +2,7 @@
   <div class="product">
     <h3 class="code">
       <input type="checkbox" v-model="product.isCheck">
+      <!--<Checkbox default-checked ></Checkbox>-->
       <router-link :to="`/products/${product.code}`">
         商品编号: {{product.code}}
       </router-link>
@@ -14,7 +15,9 @@
   </div>
 </template>
 <script>
+  import Checkbox from "ant-design-vue/es/vc-checkbox/src/Checkbox";
   export default{
+    components: {Checkbox},
     props: {
       product: {
         type: Object,
@@ -22,6 +25,7 @@
     },
     computed: {
       isCheck:function () {
+        console.log("check:"  + this.product.isCheck)
         let arg = !this.product.isCheck;
         this.$emit('checked',arg);
       }

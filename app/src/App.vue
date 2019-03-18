@@ -11,3 +11,9 @@
 
 <style>
 </style>
+<script>
+  import Checkbox from "ant-design-vue/es/vc-checkbox/src/Checkbox";
+  export default {
+    components: {Checkbox}
+  }
+</script>
