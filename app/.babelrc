@@ -1,5 +1,13 @@
 {
-  "plugins": [
-    "transform-es2015-modules-commonjs"
+
+  "plugins": ["transform-vue-jsx", "transform-runtime",
+    [
+      "import",
+      {
+        "libraryName": "ant-design-vue",
+        "libraryDirectory": "lib",
+        "style": "css"
+      }
+    ]
   ]
 }

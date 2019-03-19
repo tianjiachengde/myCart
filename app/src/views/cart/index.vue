@@ -50,7 +50,10 @@
         "cartChecked"
       ]),
       handleChecked(index,args){
-          this.cartChecked(index,args[0])
+          this.cartChecked({
+            index,
+            isCheck:args[0]
+          })
       },
       handleAmountChange(product, agrs) {
         const amount = agrs[0]

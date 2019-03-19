@@ -41,8 +41,8 @@ export const actions = {
       }
     )
   },
-  cartChecked({commit,state},index,isCheck){
-    commit('cart_checked',state,index,isCheck)
+  cartChecked({commit,state},obj){
+    commit('cart_checked',obj)
   }
 }
 
@@ -56,7 +56,7 @@ export const mutations = {
   cart_product_add(state, product) {
     state.cartProducts.push(product)
   },
-  cart_checked(state,index,isCheck){
+  cart_checked(state,{index,isCheck}){
     state.cartProducts[index].isCheck = isCheck
   }
 }
